@@ -1,15 +1,16 @@
+using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using System.Linq;
 
 public class BuildingRequiredElement : MonoBehaviour{
-	[SerializeField] private Image	slotImage;
-	[SerializeField] private Image	itemImage;
-	[SerializeField] private Text	itemCost;
-	[SerializeField] private Color	greenColor;
-	[SerializeField] private Color	redColor;
+	[SerializeField] private Image		slotImage;
+	[SerializeField] private Image		itemImage;
+	[SerializeField] private TMP_Text	itemCost;
+	[SerializeField] private Color		greenColor;
+	[SerializeField] private Color		redColor;
 
-	[HideInInspector] public bool hasRessources = false;
+	[HideInInspector] public bool		hasRessources = false;
 
 	public void	Setup(ItemInInventory ressourceRequired){
 		itemImage.sprite = ressourceRequired.itemData.visual;

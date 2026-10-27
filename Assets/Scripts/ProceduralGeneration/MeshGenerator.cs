@@ -1,7 +1,7 @@
 using UnityEngine;
 
 public static class MeshGenerator{
-	public static MeshData  GenerateTerrainMesh(float[,] heightMap, float heightMultiplier, AnimationCurve _heightCurve, int levelOfDetail, bool useFlatShading){
+	public static MeshData	GenerateTerrainMesh(float[,] heightMap, float heightMultiplier, AnimationCurve _heightCurve, int levelOfDetail, bool useFlatShading){
 		AnimationCurve	heightCurve = new AnimationCurve(_heightCurve.keys);
 
 		int		trueLevelOfDetail = (levelOfDetail == 0) ? 1 : levelOfDetail * 2;

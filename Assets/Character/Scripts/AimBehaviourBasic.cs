@@ -13,6 +13,8 @@ public class AimBehaviourBasic : GenericBehaviour{
 	private bool aim;		// Boolean to determine whether or not the player is aiming.
 
 	[SerializeField] private PlayerStats	playerStats;
+	[SerializeField] private float			crosshairWidth = 64;
+	[SerializeField] private float			crosshairHeight = 64;
 
 	// Start is always called after any Awake functions.
 	void	Start (){
@@ -106,13 +108,17 @@ public class AimBehaviourBasic : GenericBehaviour{
 	}
 
 	// Draw the crosshair when aiming.
-	void	OnGUI (){
-		if (crosshair){
-			float	 mag = behaviourManager.GetCamScript.GetCurrentPivotMagnitude(aimPivotOffset);
-			if (mag < 0.05f)
-				GUI.DrawTexture(new Rect(Screen.width / 2 - (crosshair.width * 0.5f),
-										 Screen.height / 2 - (crosshair.height * 0.5f),
-										 crosshair.width, crosshair.height), crosshair);
+	void	OnGUI(){
+		if (!crosshair)
+			return;
+
+		if (behaviourManager.GetCamScript.GetCurrentPivotMagnitude(aimPivotOffset) < 0.05f){
+			GUI.DrawTexture(new Rect(
+				Screen.width / 2 - (crosshairWidth * 0.5f),
+				Screen.height / 2 - (crosshairHeight * 0.5f),
+				crosshairWidth,
+				crosshairHeight
+			), crosshair);
 		}
 	}
 }

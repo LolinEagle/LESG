@@ -59,7 +59,7 @@ public class SaveSystem : MonoBehaviour{
 		mainMenu.clearSaveButton.interactable = true;
 	}
 
-	public void    LoadData(){
+	public void	LoadData(){
 		if (!SaveSystemActive) return;
 
 		// Recover all the data

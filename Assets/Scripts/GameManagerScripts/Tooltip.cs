@@ -1,9 +1,10 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Tooltip : MonoBehaviour{
-	[SerializeField] private Text			headerField;
-	[SerializeField] private Text			conntentField;
+	[SerializeField] private TMP_Text		headerField;
+	[SerializeField] private TMP_Text		conntentField;
 	[SerializeField] private LayoutElement	layoutElement;
 	[SerializeField] private int			maxCharacter;
 

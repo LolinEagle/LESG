@@ -3,28 +3,28 @@
 // This class corresponds to the 3rd person camera features.
 public class ThirdPersonOrbitCamBasic : MonoBehaviour 
 {
-	public Transform player;                                           // Player's reference.
-	public Vector3 pivotOffset = new Vector3(0.0f, 1.7f,  0.0f);       // Offset to repoint the camera.
-	public Vector3 camOffset   = new Vector3(0.0f, 0.0f, -3.0f);       // Offset to relocate the camera related to the player position.
-	public float smooth = 10f;                                         // Speed of camera responsiveness.
-	public float horizontalAimingSpeed = 6f;                           // Horizontal turn speed.
-	public float verticalAimingSpeed = 6f;                             // Vertical turn speed.
-	public float maxVerticalAngle = 30f;                               // Camera max clamp angle. 
-	public float minVerticalAngle = -60f;                              // Camera min clamp angle.
-	public string XAxis = "Analog X";                                  // The default horizontal axis input name.
-	public string YAxis = "Analog Y";                                  // The default vertical axis input name.
+	public Transform player;									// Player's reference.
+	public Vector3 pivotOffset = new Vector3(0.0f, 1.7f, 0.0f);	// Offset to repoint the camera.
+	public Vector3 camOffset = new Vector3(0.0f, 0.0f, -3.0f);	// Offset to relocate the camera related to the player position.
+	public float smooth = 10f;									// Speed of camera responsiveness.
+	public float horizontalAimingSpeed = 6f;					// Horizontal turn speed.
+	public float verticalAimingSpeed = 6f;						// Vertical turn speed.
+	public float maxVerticalAngle = 30f;						// Camera max clamp angle. 
+	public float minVerticalAngle = -60f;						// Camera min clamp angle.
+	public string XAxis = "Analog X";							// The default horizontal axis input name.
+	public string YAxis = "Analog Y";							// The default vertical axis input name.
 
-	private float angleH = 0;                                          // Float to store camera horizontal angle related to mouse movement.
-	private float angleV = 0;                                          // Float to store camera vertical angle related to mouse movement.
-	private Transform cam;                                             // This transform.
-	private Vector3 smoothPivotOffset;                                 // Camera current pivot offset on interpolation.
-	private Vector3 smoothCamOffset;                                   // Camera current offset on interpolation.
-	private Vector3 targetPivotOffset;                                 // Camera pivot offset target to iterpolate.
-	private Vector3 targetCamOffset;                                   // Camera offset target to interpolate.
-	private float defaultFOV;                                          // Default camera Field of View.
-	private float targetFOV;                                           // Target camera Field of View.
-	private float targetMaxVerticalAngle;                              // Custom camera max vertical clamp angle.
-	private bool isCustomOffset;                                       // Boolean to determine whether or not a custom camera offset is being used.
+	private float angleH = 0;									// Float to store camera horizontal angle related to mouse movement.
+	private float angleV = 0;									// Float to store camera vertical angle related to mouse movement.
+	private Transform cam;										// This transform.
+	private Vector3 smoothPivotOffset;							// Camera current pivot offset on interpolation.
+	private Vector3 smoothCamOffset;							// Camera current offset on interpolation.
+	private Vector3 targetPivotOffset;							// Camera pivot offset target to iterpolate.
+	private Vector3 targetCamOffset;							// Camera offset target to interpolate.
+	private float defaultFOV;									// Default camera Field of View.
+	private float targetFOV;									// Target camera Field of View.
+	private float targetMaxVerticalAngle;						// Custom camera max vertical clamp angle.
+	private bool isCustomOffset;								// Boolean to determine whether or not a custom camera offset is being used.
 
 	// Get the camera horizontal angle.
 	public float GetH { get { return angleH; } }
@@ -73,7 +73,7 @@ public class ThirdPersonOrbitCamBasic : MonoBehaviour
 		cam.rotation = aimRotation;
 
 		// Set FOV.
-		cam.GetComponent<Camera>().fieldOfView = Mathf.Lerp (cam.GetComponent<Camera>().fieldOfView, targetFOV,  Time.deltaTime);
+		cam.GetComponent<Camera>().fieldOfView = Mathf.Lerp (cam.GetComponent<Camera>().fieldOfView, targetFOV, Time.deltaTime);
 
 		// Test for collision with the environment based on current camera position.
 		Vector3 baseTempPosition = player.position + camYRotation * targetPivotOffset;
@@ -94,7 +94,7 @@ public class ThirdPersonOrbitCamBasic : MonoBehaviour
 		smoothPivotOffset = Vector3.Lerp(smoothPivotOffset, customOffsetCollision ? pivotOffset : targetPivotOffset, smooth * Time.deltaTime);
 		smoothCamOffset = Vector3.Lerp(smoothCamOffset, customOffsetCollision ? Vector3.zero : noCollisionOffset, smooth * Time.deltaTime);
 
-		cam.position =  player.position + camYRotation * smoothPivotOffset + aimRotation * smoothCamOffset;
+		cam.position = player.position + camYRotation * smoothPivotOffset + aimRotation * smoothCamOffset;
 	}
 
 	// Set camera offsets to custom values.

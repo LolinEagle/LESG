@@ -1,25 +1,26 @@
+using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using System.Collections.Generic;
-using UnityEngine.Audio;
 
 public class MainMenu : MonoBehaviour{
-	public Button						loadGameButton;
-	public Button						clearSaveButton;
-	[SerializeField] private Dropdown	resolutionsDropdown;
-	[SerializeField] private Dropdown	qualitysDropdown;
-	[SerializeField] private AudioMixer	audioMixer;
-	[SerializeField] private Slider		soundSlider;
-	[SerializeField] private GameObject	optionsPanel;
-	[SerializeField] private Toggle		fullScreenToggle;
+	public Button							loadGameButton;
+	public Button							clearSaveButton;
+	[SerializeField] private TMP_Dropdown	resolutionsDropdown;
+	[SerializeField] private TMP_Dropdown	qualitysDropdown;
+	[SerializeField] private AudioMixer		audioMixer;
+	[SerializeField] private Slider			soundSlider;
+	[SerializeField] private GameObject		optionsPanel;
+	[SerializeField] private Toggle			fullScreenToggle;
 
 	[Header("heads-up display")]
-	[SerializeField] private GameObject	hud;
-	[SerializeField] private GameObject	inventoryPanel;
-	[SerializeField] private GameObject	craftingPanel;
-	[SerializeField] private GameObject	tooltip;
-	[SerializeField] private GameObject	itemActionPanel;
+	[SerializeField] private GameObject		hud;
+	[SerializeField] private GameObject		inventoryPanel;
+	[SerializeField] private GameObject		craftingPanel;
+	[SerializeField] private GameObject		tooltip;
+	[SerializeField] private GameObject		itemActionPanel;
 
 	public static bool	loadSavedData;
 	private List<int>	resolutionIndex = new List<int>();
@@ -112,9 +113,9 @@ public class MainMenu : MonoBehaviour{
 	}
 
 	public void	SetResolution(int i){
-		Resolution	resolution = Screen.resolutions[resolutionIndex[i]];
+		Resolution	res = Screen.resolutions[resolutionIndex[i]];
 
-		Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
+		Screen.SetResolution(res.width, res.height, Screen.fullScreen);
 	}
 
 	public void	SetFullScreen(bool isFullScreen){

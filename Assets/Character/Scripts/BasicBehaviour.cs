@@ -5,28 +5,28 @@ using System.Collections.Generic;
 // Contains basic setup and common functions used by all the player behaviours.
 public class BasicBehaviour : MonoBehaviour
 {
-	public Transform playerCamera;                        // Reference to the camera that focus the player.
-	public float turnSmoothing = 0.06f;                   // Speed of turn when moving to match camera facing.
-	public float sprintFOV = 100f;                        // the FOV to use on the camera when player is sprinting.
-	public string sprintButton = "Sprint";                // Default sprint button input name.
+	public Transform playerCamera;							// Reference to the camera that focus the player.
+	public float turnSmoothing = 0.06f;						// Speed of turn when moving to match camera facing.
+	public float sprintFOV = 100f;							// the FOV to use on the camera when player is sprinting.
+	public string sprintButton = "Sprint";					// Default sprint button input name.
 
-	private float h;                                      // Horizontal Axis.
-	private float v;                                      // Vertical Axis.
-	private int currentBehaviour;                         // Reference to the current player behaviour.
-	private int defaultBehaviour;                         // The default behaviour of the player when any other is not active.
-	private int behaviourLocked;                          // Reference to temporary locked behaviour that forbids override.
-	private Vector3 lastDirection;                        // Last direction the player was moving.
-	private Animator anim;                                // Reference to the Animator component.
-	private ThirdPersonOrbitCamBasic camScript;           // Reference to the third person camera script.
-	private bool sprint;                                  // Boolean to determine whether or not the player activated the sprint mode.
-	private bool changedFOV;                              // Boolean to store when the sprint action has changed de camera FOV.
-	private int hFloat;                                   // Animator variable related to Horizontal Axis.
-	private int vFloat;                                   // Animator variable related to Vertical Axis.
-	private List<GenericBehaviour> behaviours;            // The list containing all the enabled player behaviours.
-	private List<GenericBehaviour> overridingBehaviours;  // List of current overriding behaviours.
-	private Rigidbody rBody;                              // Reference to the player's rigidbody.
-	private int groundedBool;                             // Animator variable related to whether or not the player is on the ground.
-	private Vector3 colExtents;                           // Collider extents for ground test. 
+	private float h;										// Horizontal Axis.
+	private float v;										// Vertical Axis.
+	private int currentBehaviour;							// Reference to the current player behaviour.
+	private int defaultBehaviour;							// The default behaviour of the player when any other is not active.
+	private int behaviourLocked;							// Reference to temporary locked behaviour that forbids override.
+	private Vector3 lastDirection;							// Last direction the player was moving.
+	private Animator anim;									// Reference to the Animator component.
+	private ThirdPersonOrbitCamBasic camScript;				// Reference to the third person camera script.
+	private bool sprint;									// Boolean to determine whether or not the player activated the sprint mode.
+	private bool changedFOV;								// Boolean to store when the sprint action has changed de camera FOV.
+	private int hFloat;										// Animator variable related to Horizontal Axis.
+	private int vFloat;										// Animator variable related to Vertical Axis.
+	private List<GenericBehaviour> behaviours;				// The list containing all the enabled player behaviours.
+	private List<GenericBehaviour> overridingBehaviours;	// List of current overriding behaviours.
+	private Rigidbody rBody;								// Reference to the player's rigidbody.
+	private int groundedBool;								// Animator variable related to whether or not the player is on the ground.
+	private Vector3 colExtents;								// Collider extents for ground test. 
 
 	// Get current horizontal and vertical axes.
 	public float GetH { get { return h; } }
@@ -42,7 +42,7 @@ public class BasicBehaviour : MonoBehaviour
 	public Animator GetAnim { get { return anim; } }
 
 	// Get current default behaviour.
-	public int GetDefaultBehaviour {  get { return defaultBehaviour; } }
+	public int GetDefaultBehaviour { get { return defaultBehaviour; } }
 
 	void Awake ()
 	{
@@ -238,7 +238,7 @@ public class BasicBehaviour : MonoBehaviour
 	}
 
 	// Atempt to lock on a specific behaviour.
-	//  No other behaviour can overrhide during the temporary lock.
+	// No other behaviour can overrhide during the temporary lock.
 	// Use for temporary transitions like jumping, entering/exiting aiming mode, etc.
 	public void LockTempBehaviour(int behaviourCode)
 	{
@@ -330,11 +330,11 @@ public class BasicBehaviour : MonoBehaviour
 // Contains references to local components that may differ according to the behaviour itself.
 public abstract class GenericBehaviour : MonoBehaviour
 {
-	//protected Animator anim;                       // Reference to the Animator component.
-	protected int speedFloat;                      // Speed parameter on the Animator.
-	protected BasicBehaviour behaviourManager;     // Reference to the basic behaviour manager.
-	protected int behaviourCode;                   // The code that identifies a behaviour.
-	protected bool canSprint;                      // Boolean to store if the behaviour allows the player to sprint.
+	//protected Animator anim;					// Reference to the Animator component.
+	protected int speedFloat;					// Speed parameter on the Animator.
+	protected BasicBehaviour behaviourManager;	// Reference to the basic behaviour manager.
+	protected int behaviourCode;				// The code that identifies a behaviour.
+	protected bool canSprint;					// Boolean to store if the behaviour allows the player to sprint.
 
 	void Awake()
 	{
